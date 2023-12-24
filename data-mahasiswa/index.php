@@ -46,7 +46,7 @@ if (!isset($_SESSION['username'])) {
                     mysqli_stmt_bind_param($query, 'i', $user);
                     mysqli_stmt_execute($query);
                     $all_data = mysqli_stmt_get_result($query);
-
+                    
                     foreach ($all_data as $row) :
                     ?>
                         <tr>

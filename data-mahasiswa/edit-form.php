@@ -42,7 +42,7 @@ if(isset($_GET['modify'])){
                             <label class="form-label fw-semibold">Jenis Kelamin</label>
                             <div class="input-group flex-nowrap">
                                 <select class="form-select" name="jk" id="jk">
-                                    <option class="fw-bold" disabled value="<?php echo $data['jk'] ?>"><?php echo $data['jk'] ?></option>
+                                    <option class="fw-bold" value="<?php echo $data['jk'] ?>"><?php echo $data['jk'] ?></option>
                                     <option value="Laki-laki">Laki-laki</option>
                                     <option value="Perempuan">Perempuan</option>
                                 </select>
@@ -58,7 +58,7 @@ if(isset($_GET['modify'])){
                             <label class="form-label fw-semibold">jurusan</label>
                             <div class="input-group flex-nowrap">
                             <select class="form-select" name="jrs" id="jrs">
-                                    <option class="fw-bold" disabled value="<?php echo $data['jurusan'] ?>"><?php echo $data['jurusan'] ?></option>
+                                    <option class="fw-bold" value="<?php echo $data['jurusan'] ?>"><?php echo $data['jurusan'] ?></option>
                                     <option value="Teknik Informatika">Teknik Informatika</option>
                                     <option value="Sistem Informasi">Sistem Informasi</option>
                                     <option value="Bisnis Digital">Bisnis Digital</option>

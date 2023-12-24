@@ -36,10 +36,10 @@ require '../template/header.php';
                         <td><?php echo ucwords($rows['email']) ?></td>
                         <td>
                             <?php if ($rows['role'] == 'admin'):?>
-                            <span class="badge text-white bg-success fs-6 "><?php echo $rows['role'] ?></span>
+                            <span class="badge text-white bg-success fs-6 "><?php echo ucwords($rows['role']) ?></span>
                             <?php endif ?>
                             <?php if ($rows['role'] == 'user'):?>
-                            <span class="badge text-white bg-danger fs-6"><?php echo $rows['role'] ?></span>
+                            <span class="badge text-white bg-danger fs-6"><?php echo ucwords($rows['role']) ?></span>
                             <?php endif ?>
                         </td>
                         <td class="d-grid">
