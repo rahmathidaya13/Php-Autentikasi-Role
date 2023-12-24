@@ -7,6 +7,15 @@ require '../template/header.php';
 <div class="container">
     <div class="row">
         <div class="col-md-5 mx-auto me-auto mt-5">
+            <!-- Notifikasi -->
+            <?php if (isset($_SESSION['alert'])) : ?>
+                <div class="alert alert-<?php echo $_SESSION['type'] ?> alert-dismissible fade show" role="alert">
+                    <span><i class="<?php echo $_SESSION['icon'] ?>"></i> <?php echo $_SESSION['alert'] ?></span>
+                    <a href="#" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+                </div>
+            <?php unset($_SESSION['alert']);
+            endif; ?>
+            <!-- endnotifikasi -->
             <a class="btn btn-primary mb-3" href="../login.php">Back to Login</a>
             <table class="table table-dark table-striped">
                 <thead class="text-center">

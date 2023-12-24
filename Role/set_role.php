@@ -12,17 +12,6 @@ if(isset($_GET['md_role'])){
 <div class="container">
     <div class="row">
         <div class="col-md-4 me-auto mx-auto mt-5">
-
-            <!-- Notifikasi -->
-            <?php if (isset($_SESSION['alert'])) : ?>
-                <div class="alert alert-<?php echo $_SESSION['type'] ?> alert-dismissible fade show" role="alert">
-                    <span><i class="<?php echo $_SESSION['icon'] ?>"></i> <?php echo $_SESSION['alert'] ?></span>
-                    <a href="#" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
-                </div>
-            <?php unset($_SESSION['alert']);
-            endif; ?>
-            <!-- endnotifikasi -->
-
             <div class="card bg-primary-subtle">
                 <div class="card-body">
                     <h3 class="card-title text-center mb-3">Ubah Role</h3>

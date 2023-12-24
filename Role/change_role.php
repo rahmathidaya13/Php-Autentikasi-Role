@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../config/koneksi.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -12,13 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['type'] = 'success';
         $_SESSION['alert'] = 'Berhasil ubah role';
         $_SESSION['icon'] = 'bi bi-check-circle-fill';
-        header('Location:index.php');
+        header('Location:../Role/index.php');
         exit();
     } else {
         $_SESSION['type'] = 'danger';
         $_SESSION['alert'] = 'Gagal ubah role';
         $_SESSION['icon'] = 'bi bi-exclamation-triangle-fill';
-        header('Location:set_role.php');
+        header('Location:../Role/set_role.php');
         exit();
     }
 }
