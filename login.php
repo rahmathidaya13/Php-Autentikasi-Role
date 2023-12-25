@@ -12,7 +12,7 @@ mysqli_close($conn);
 
 <div class="container">
     <div class="row">
-        <div class="col-md-4 me-auto mx-auto mt-5">
+        <div class="col-md-4 me-auto mx-auto py-5">
             <!-- Notofikasi -->
             <?php if (isset($_SESSION['alert'])) : ?>
                 <div class="alert alert-<?php echo $_SESSION['type'] ?> alert-dismissible fade show" role="alert">
@@ -27,20 +27,32 @@ mysqli_close($conn);
                 <div class="card-body">
                     <h3 class="card-title text-center mb-3">Sign in</h3>
                     <form action="console/login-proses.php" method="post">
-                        <div class="mb-3">
+                        <div class="mb-2">
                             <label class="form-label fw-semibold">Username</label>
                             <div class="input-group flex-nowrap">
                                 <span class="input-group-text" id="addon-wrapping"><i class="bi bi-person-fill"></i></span>
-                                <input type="text" class="form-control" name="username" id="username" placeholder="Username" autofocus autocomplete="off">
+                                <input type="text" value="<?php echo $_SESSION['log-old-username'] ?? '' ?>" class="form-control <?php echo $_SESSION['is-invalid1'] ?? ''; unset($_SESSION['is-invalid1']); ?>" name="username" id="username" placeholder="Username" autofocus autocomplete="off">
                             </div>
+                            <?php if (isset($_SESSION['old-user'])) : ?>
+                                <div class="text-danger mt-2">
+                                    <?php echo $_SESSION['old-user'] ?>
+                                </div>
+                            <?php unset($_SESSION['old-user']);
+                            endif ?>
                         </div>
                         <div class="mb-3">
                             <label class="form-label fw-semibold">Password</label>
                             <div class="input-group flex-nowrap">
                                 <span class="input-group-text" id="addon-wrapping"><i class="bi bi-file-lock-fill"></i></span>
-                                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                                <input type="password" value="<?php echo $_SESSION['log-old-password'] ?? '' ?>" class="form-control <?php echo $_SESSION['is-invalid2'] ?? ''; unset($_SESSION['is-invalid2']); ?>" name="password" id="password" placeholder="Password">
                                 <span class="input-group-text" id="addon-wrapping"><i id="show" class="bi bi-eye-fill"></i></span>
                             </div>
+                            <?php if (isset($_SESSION['old-password'])) : ?>
+                                <div class="text-danger mt-2">
+                                    <?php echo $_SESSION['old-password'] ?>
+                                </div>
+                            <?php unset($_SESSION['old-password']);
+                            endif ?>
                         </div>
                         <div class="mb-3 d-grid gap-2">
                             <button class="btn btn-primary">Login</button>
@@ -50,11 +62,12 @@ mysqli_close($conn);
                         </div>
                     </form>
                     <div class="mb-3 d-flex justify-content-center">
-                             <a class="text-decoration-none" href="Role/index.php">Role cek</a>
-                        </div>
+                        <a class="text-decoration-none" href="Role/index.php">Role cek</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 <?php require 'template/footer.php' ?>

@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     mysqli_stmt_execute($update_role);
     if ($update_role) {
         $_SESSION['type'] = 'success';
-        $_SESSION['alert'] = 'Berhasil ubah role, Role saat ini adalah';
+        $_SESSION['alert'] = 'Berhasil ubah role';
         $_SESSION['icon'] = 'bi bi-check-circle-fill';
         header('Location:../Role/index.php');
         exit();
