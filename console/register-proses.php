@@ -3,25 +3,26 @@ session_start();
 require '../config/koneksi.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // ambil log bekas inputan yang gagal
-    $_SESSION['log-old-username'] = htmlspecialchars($_POST['username']);
-    $_SESSION['log-old-email'] = htmlspecialchars($_POST['email']);
-    $_SESSION['log-old-password'] = htmlspecialchars($_POST['password']);
-    $_SESSION['log-old-cpassword'] = htmlspecialchars($_POST['cpassword']);
-
+    
     // jika ada data yang diinput dari form jalankan code yang ada dibawah ini
     if (
         !empty($_POST['username']) &&
         !empty($_POST['email']) &&
         !empty($_POST['password']) &&
         !empty($_POST['cpassword'])
-    ) {
-
-        $username = filter_var(htmlspecialchars($_POST['username']), FILTER_SANITIZE_SPECIAL_CHARS);
-        $email = filter_var(htmlspecialchars($_POST['email']), FILTER_VALIDATE_EMAIL);
-        $password = hash('sha256', htmlspecialchars($_POST['password']));
-        $cpassword = hash('sha256', htmlspecialchars($_POST['cpassword']));
-
+        ) {
+            
+            $username = filter_var(htmlspecialchars($_POST['username']), FILTER_SANITIZE_SPECIAL_CHARS);
+            $email = filter_var(htmlspecialchars($_POST['email']), FILTER_VALIDATE_EMAIL);
+            $password = hash('sha256', htmlspecialchars($_POST['password']));
+            $cpassword = hash('sha256', htmlspecialchars($_POST['cpassword']));
+            
+            // ambil log bekas inputan yang gagal
+            $_SESSION['log-old-username'] = htmlspecialchars($_POST['username']);
+            $_SESSION['log-old-email'] = htmlspecialchars($_POST['email']);
+            $_SESSION['log-old-password'] = htmlspecialchars($_POST['password']);
+            $_SESSION['log-old-cpassword'] = htmlspecialchars($_POST['cpassword']);
+            
         if ($password == $cpassword) {
             // cek username dan email di database, jika ternyata ada email yang dimasukan sama maka data tidak
             // tersimpan dan akan menampilkan pemberitahuannya

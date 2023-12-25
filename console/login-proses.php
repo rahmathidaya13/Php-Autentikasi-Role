@@ -3,15 +3,15 @@ session_start();
 require '../config/koneksi.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // buat log-old ketika salah satu inputan salah atau error 
-    $_SESSION['log-old-username'] = htmlspecialchars($_POST['username']);
-    $_SESSION['log-old-password'] = htmlspecialchars($_POST['password']);
+    
     // untuk memvalidasi bahwa ada data dalam form yang mau dikirim ke database
-
-
     if (!empty($_POST['username']) && !empty($_POST['password'])) {
         $username = filter_var(htmlspecialchars($_POST['username']), FILTER_SANITIZE_SPECIAL_CHARS);
         $password = hash('sha256', htmlspecialchars($_POST['password']));
+        
+        // buat log-old ketika salah satu inputan salah atau error 
+        $_SESSION['log-old-username'] = htmlspecialchars($_POST['username']);
+        $_SESSION['log-old-password'] = htmlspecialchars($_POST['password']);
 
         $query = mysqli_prepare($conn, "SELECT username,password,role FROM user WHERE username = ? AND password = ? ");
         mysqli_stmt_bind_param($query, 'ss', $username, $password);
