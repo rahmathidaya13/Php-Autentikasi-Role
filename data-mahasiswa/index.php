@@ -14,7 +14,7 @@ if (!isset($_SESSION['username'])) {
     <div class="row">
         <div class="col-md-10 mx-auto me-auto mt-5">
 
-            <!-- Notofikasi -->
+            <!-- Notifikasi -->
             <?php if (isset($_SESSION['alert'])) : ?>
                 <div class="alert alert-<?php echo $_SESSION['type'] ?> alert-dismissible fade show" role="alert">
                     <span><i class="<?php echo $_SESSION['icon'] ?>"></i> <?php echo $_SESSION['alert'] ?></span>
