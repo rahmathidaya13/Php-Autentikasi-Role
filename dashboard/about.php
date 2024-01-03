@@ -1,6 +1,9 @@
 <?php
 $GLOBALS['title'] = 'About';
 require 'index.php';
+// 
+require '../template/header.php';
+require 'navbar.php'; 
 ?>
 <!-- isi konten -->
 <div class="container">
@@ -14,3 +17,5 @@ require 'index.php';
         </div>
     </div>
 </div>
+<?php require '../template/footer.php'; ?>
+

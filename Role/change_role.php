@@ -1,7 +1,6 @@
 <?php
 session_start();
 require '../config/koneksi.php';
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = htmlspecialchars($_POST['username']);
     $role = htmlspecialchars($_POST['role']);

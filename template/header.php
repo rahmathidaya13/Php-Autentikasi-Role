@@ -19,5 +19,10 @@
         border-color: #dc3545;
         box-shadow: 0 0 0 0.1rem rgb(220 53 69 / 0%);
     }
+    .form-select.is-invalid:focus,
+    .was-validated .form-select:invalid:focus {
+        border-color: #dc3545;
+        box-shadow: 0 0 0 0.1rem rgb(220 53 69 / 0%);
+    }
 </style>
 <body class="bg-body-secondary text-emphasis-dark" >

@@ -1,7 +1,9 @@
 <?php 
 $GLOBALS['title'] = 'Form Edit mahasiwa';
-require '../dashboard/index.php';
 require '../config/koneksi.php';
+require '../dashboard/index.php';
+require '../template/header.php';
+require '../dashboard/navbar.php';
 if(isset($_GET['modify'])){
     $nim = mysqli_real_escape_string($conn, htmlspecialchars($_GET['modify']));
     $query = mysqli_query($conn, "SELECT * FROM tb_mahasiswa WHERE nim = '$nim'");
@@ -23,7 +25,7 @@ if(isset($_GET['modify'])){
 
             <div class="card bg-primary-subtle">
                 <div class="card-body">
-                    <h3 class="card-title text-start mb-3">Form edit tambah</h3>
+                    <h3 class="card-title text-start mb-3">Form edit</h3>
                     <form action="update.php" method="post">
                         <input type="hidden" name="id" id="id" value="<?php echo $data['id_mahasiswa'] ?>" >
                         <div class="mb-3">
@@ -80,3 +82,4 @@ if(isset($_GET['modify'])){
         </div>
     </div>
 </div>
+<?php require '../template/footer.php' ?>

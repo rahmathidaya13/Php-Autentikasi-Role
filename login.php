@@ -13,7 +13,7 @@ mysqli_close($conn);
 <div class="container">
     <div class="row">
         <div class="col-md-4 me-auto mx-auto py-5">
-            <!-- Notofikasi -->
+            <!-- Notifikasi -->
             <?php if (isset($_SESSION['alert'])) : ?>
                 <div class="alert alert-<?php echo $_SESSION['type'] ?> alert-dismissible fade show" role="alert">
                     <span><i class="<?php echo $_SESSION['icon'] ?>"></i> <?php echo $_SESSION['alert'] ?></span>
@@ -22,7 +22,6 @@ mysqli_close($conn);
             <?php unset($_SESSION['alert']);
             endif; ?>
             <!-- endnotifikasi -->
-
             <div class="card bg-dark-subtle">
                 <div class="card-body">
                     <h3 class="card-title text-center mb-3">Sign in</h3>

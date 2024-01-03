@@ -14,20 +14,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             $username = filter_var(htmlspecialchars($_POST['username']), FILTER_SANITIZE_SPECIAL_CHARS);
             $email = filter_var(htmlspecialchars($_POST['email']), FILTER_VALIDATE_EMAIL);
-            $password = hash('sha256', htmlspecialchars($_POST['password']));
-            $cpassword = hash('sha256', htmlspecialchars($_POST['cpassword']));
-            
+            // $password = hash('sha256', htmlspecialchars($_POST['password']));
+            // $cpassword = hash('sha256', htmlspecialchars($_POST['cpassword']));
+            $password = password_hash(htmlspecialchars($_POST['password']), PASSWORD_DEFAULT);
+            $cpassword = password_hash(htmlspecialchars($_POST['cpassword']), PASSWORD_DEFAULT);
+
             // ambil log bekas inputan yang gagal
-            $_SESSION['log-old-username'] = htmlspecialchars($_POST['username']);
+            $_SESSION['log-old-username-rg'] = htmlspecialchars($_POST['username']);
             $_SESSION['log-old-email'] = htmlspecialchars($_POST['email']);
-            $_SESSION['log-old-password'] = htmlspecialchars($_POST['password']);
+            $_SESSION['log-old-password-rg'] = htmlspecialchars($_POST['password']);
             $_SESSION['log-old-cpassword'] = htmlspecialchars($_POST['cpassword']);
             
-        if ($password == $cpassword) {
+        if ($password != $cpassword) {
             // cek username dan email di database, jika ternyata ada email yang dimasukan sama maka data tidak
             // tersimpan dan akan menampilkan pemberitahuannya
             $email_check = mysqli_query($conn, "SELECT email FROM user WHERE email = '$email'");
-            if (!mysqli_num_rows($email_check)) {
+            if (empty(mysqli_num_rows($email_check))) {
                 $query = mysqli_prepare($conn, "INSERT INTO user (username,email,password) VALUES (?,?,?)");
                 mysqli_stmt_bind_param($query, 'sss', $username, $email, $password);
                 mysqli_stmt_execute($query);

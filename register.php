@@ -27,7 +27,7 @@ require 'template/header.php';
                             <label class="form-label fw-semibold">Username</label>
                             <div class="input-group flex-nowrap">
                                 <span class="input-group-text" id="addon-wrapping"><i class="bi bi-person-fill"></i></span>
-                                <input type="text" value="<?php echo $_SESSION['log-old-username'] ?? '' ?>" class="form-control <?php echo $_SESSION['is-invalid1'] ?? ''; unset($_SESSION['is-invalid1']); ?>" name="username" id="username" placeholder="Username" autofocus autocomplete="off">
+                                <input type="text" value="<?php echo $_SESSION['log-old-username-rg'] ?? '' ?>" class="form-control <?php echo $_SESSION['is-invalid1'] ?? ''; unset($_SESSION['is-invalid1']); ?>" name="username" id="username" placeholder="Username" autofocus autocomplete="off">
                             </div>
                             <?php if (isset($_SESSION['old-user'])) : ?>
                                 <div class="text-danger mt-2">
@@ -53,7 +53,7 @@ require 'template/header.php';
                             <label class="form-label fw-semibold">Password</label>
                             <div class="input-group flex-nowrap">
                                 <span class="input-group-text" id="addon-wrapping"><i class="bi bi-file-lock-fill"></i></span>
-                                <input type="password" value="<?php echo $_SESSION['log-old-password'] ?? '' ?>" class="form-control <?php echo $_SESSION['is-invalid3'] ?? ''; unset($_SESSION['is-invalid3']); ?>" name="password" id="password" placeholder="Password">
+                                <input type="password" value="<?php echo $_SESSION['log-old-password-rg'] ?? '' ?>" class="form-control <?php echo $_SESSION['is-invalid3'] ?? ''; unset($_SESSION['is-invalid3']); ?>" name="password" id="password" placeholder="Password">
                                 <span class="input-group-text" id="addon-wrapping"><i id="show" class="bi bi-eye-fill"></i></span>
                             </div>
                             <?php if (isset($_SESSION['old-password'])) : ?>

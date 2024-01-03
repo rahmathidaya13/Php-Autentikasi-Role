@@ -2,6 +2,9 @@
 $GLOBALS['title'] = 'Data Mahasiswa';
 require '../config/koneksi.php';
 require '../dashboard/index.php';
+require '../template/header.php';
+require '../dashboard/navbar.php';
+
 if (!isset($_SESSION['username'])) {
     header("Location:../login.php");
     exit();
@@ -20,9 +23,10 @@ if (!isset($_SESSION['username'])) {
             <?php unset($_SESSION['alert']);
             endif; ?>
             <!-- endnotifikasi -->
-
+            <?php if($data['role'] == 'admin') : ?>
             <a class="btn btn-info btn-sm mb-3" href="add-form.php">Tambah</a>
-            <table class="table table-dark table-striped">
+            <?php endif ?>
+            <table class="table table-dark table-striped table-responsive">
                 <thead class="text-center">
                     <tr>
                         <th scope="col">#</th>
@@ -46,7 +50,6 @@ if (!isset($_SESSION['username'])) {
                     mysqli_stmt_bind_param($query, 'i', $user);
                     mysqli_stmt_execute($query);
                     $all_data = mysqli_stmt_get_result($query);
-                    
                     foreach ($all_data as $row) :
                     ?>
                         <tr>
@@ -57,7 +60,7 @@ if (!isset($_SESSION['username'])) {
                             <td><?php echo $row['kelas'] ?></td>
                             <td><?php echo $row['jurusan'] ?></td>
                             <td><?php echo $row['no_hp'] ?></td>
-                            <!-- jika role buka admin fitur update dan delete akan dihilangkan -->
+                            <!-- jika role bukan admin fitur update dan delete akan dihilangkan -->
                             <?php if ($row['role'] == 'admin') : ?>
                                 <td>
                                     <a class="btn btn-warning btn-sm" href="edit-form.php?modify=<?php echo $row['nim'] ?>">Ubah</a>
@@ -65,14 +68,15 @@ if (!isset($_SESSION['username'])) {
                                 </td>
                             <?php endif ?>
                         </tr>
-                    <?php endforeach ?>
+                    <?php endforeach; ?>
                 </tbody>
                 <?php if (empty($row)) : ?>
                     <tr>
                         <td class="text-center" colspan="13">Tidak ada data tersedia</td>
                     </tr>
-                <?php  endif ?>
+                <?php endif ?>
             </table>
         </div>
     </div>
 </div>
+<?php require '../template/footer.php' ?>
